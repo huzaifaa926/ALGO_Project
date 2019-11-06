@@ -1,4 +1,5 @@
 import os
+import shutil
 class node:
     __node_number = 0
     __x_coordinate = 0
@@ -7,6 +8,26 @@ class node:
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmark")
+CLEANED_DATA = os.path.join(BASE_DIR, "cleaned_data_benchmark")
+
+def write_to_file(filename, data_to_be_cleaned):
+    # try:
+    #     shutil.rmtree(CLEANED_DATA)
+    # except OSError:
+    #     print ("Deletion of the directory %s failed" % CLEANED_DATA)
+    try:
+        os.mkdir(CLEANED_DATA)
+    except OSError:
+        print ("Creation of the directory %s failed" % CLEANED_DATA)
+    
+    file_path = os.path.join(CLEANED_DATA, filename)
+    file = open(file_path, "a")
+    for words in data_to_be_cleaned:
+        for i in range(len(words)):
+            file.write(str(words[i]))
+            if i!=len(words)-1:
+                file.write(" ")
+        file.write("\n")
 
 def clean_data(filename):
     file_path = os.path.join(BENCHMARK_DIR, filename)
@@ -55,8 +76,8 @@ def clean_data(filename):
                     is_convert = True
                 is_pop = True
             list_len-=1
-    for word in data_to_be_cleaned:
-        print(word)
+
+    write_to_file(filename, data_to_be_cleaned)
     # print(data_to_be_cleaned)
 
     
