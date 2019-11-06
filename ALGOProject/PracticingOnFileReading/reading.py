@@ -8,36 +8,38 @@ class node:
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmark")
 
-def read_words(filename):
-    with open(filename) as file:
-        #Ignoring first line
-        file.readline()
-        for line in file:
-            for word in line.split():
-                yield word
-
 def clean_data(filename):
     file_path = os.path.join(BENCHMARK_DIR, filename)
-    words = read_words(file_path)
-    data_to_be_clean = list(words)
+    data_to_be_cleaned = []
 
-    lower_limit = int(data_to_be_clean[0])*3 + 1
-    upper_limit = len(data_to_be_clean) - 1
+    with open(file_path) as file:
+        #Discarding first two lines
+        file.readline()
+        file.readline()
+        temp = []
+        temp.append(int(file.readline()))
+        data_to_be_cleaned.append(temp)
+        #Discarding line breaks
+        file.readline()
+        for i in range(data_to_be_cleaned[0][0]):
+            temp = []
+            line = file.readline()
+            for word in line.split():
+                temp.append(word)
+            data_to_be_cleaned.append(temp)
+        #Discarding line breaks
+        file.readline()
+        for line in file.readlines():
+            temp = []
+            for word in line.split():
+                temp.append(word)
+            data_to_be_cleaned.append(temp)
+        #Removing the line break from second last line
+        data_to_be_cleaned.pop(-2)
+    
+    print(data_to_be_cleaned)
 
-    for i in range(len(data_to_be_clean)):
-        print(len(data_to_be_clean))
-        data_to_be_clean.pop(i)
-    # for i in range(lower_limit+2, upper_limit, 3):
-    #     data_to_be_clean.pop(i)
-    #     data_to_be_clean[i+1] = float(data_to_be_clean[i+1])/10000000
-    #     data_to_be_clean.pop(i+2)
-    #     upper_limit = len(data_to_be_clean)-1
-
-    for a in data_to_be_clean:
-        print(a)
-
-
-
+    
 if __name__ == "__main__":
 
     clean_data("input10.txt")
