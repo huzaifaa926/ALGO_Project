@@ -36,8 +36,28 @@ def clean_data(filename):
             data_to_be_cleaned.append(temp)
         #Removing the line break from second last line
         data_to_be_cleaned.pop(-2)
-    
-    print(data_to_be_cleaned)
+
+    lower_bound = data_to_be_cleaned[0][0] + 1
+    upper_bound = len(data_to_be_cleaned) - 1
+    for i in range(lower_bound, upper_bound):
+        list_len = len(data_to_be_cleaned[i]) - 1
+        is_pop = True
+        is_convert = True
+        while list_len>1:
+            if is_pop:
+                data_to_be_cleaned[i].pop(list_len)
+                is_pop = False
+            else:
+                if is_convert:
+                    data_to_be_cleaned[i][list_len] = float(data_to_be_cleaned[i][list_len])/10000000
+                    is_convert = False
+                else:
+                    is_convert = True
+                is_pop = True
+            list_len-=1
+    for word in data_to_be_cleaned:
+        print(word)
+    # print(data_to_be_cleaned)
 
     
 if __name__ == "__main__":
