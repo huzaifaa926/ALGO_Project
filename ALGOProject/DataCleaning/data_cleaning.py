@@ -1,10 +1,5 @@
 import os
 import shutil
-class node:
-    __node_number = 0
-    __x_coordinate = 0
-    __y_coordinate = 0
-    # def __init__(self, )
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmark")
@@ -77,10 +72,5 @@ def clean_data(filename):
                 is_pop = True
             list_len-=1
 
-    # write_to_file(filename, data_to_be_cleaned)
-
-    
-if __name__ == "__main__":
-
-    clean_data("input10.txt")
+    write_to_file(filename, data_to_be_cleaned)
     
