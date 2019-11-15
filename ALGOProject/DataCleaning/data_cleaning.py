@@ -5,6 +5,62 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BENCHMARK_DIR = os.path.join(BASE_DIR, "benchmark")
 CLEANED_DATA = os.path.join(BASE_DIR, "cleaned_data_benchmark")
 
+def formatting_data(data_to_be_cleaned):
+    no_of_nodes = data_to_be_cleaned[0][0]
+    data_to_be_cleaned[0] = {"no_of_nodes": no_of_nodes}
+    # formatting co-ordinates {n: [x, y]}
+    for i in range(1, no_of_nodes+1):
+        # saving variable for later use, i.e: for co-ordinates
+        temp = data_to_be_cleaned[i]
+        # temp[1:] = [x,y]
+        data_to_be_cleaned[i] = {int(data_to_be_cleaned[i][0]): temp[1:]}
+
+    # formatting edges data {edge: (edge, cost)}
+    node_count = 0
+    for i in range(no_of_nodes+1, len(data_to_be_cleaned)-1):
+        # saving variable for later use, i.e: for edge, cost
+        temp = data_to_be_cleaned[i]
+
+        # IDK why i did that
+        # data_to_be_cleaned[i] = {int(data_to_be_cleaned[i][0]) : temp[1:]}
+        #####
+
+        data_to_be_cleaned[i] = {node_count : temp[1:]}
+        # length of each edge row
+        length = len(temp)-1
+        # converting edge, cost into tuple (edge, cost)
+        for j in range(1, length, 2):
+            tuple_temp = ()
+            tuple_temp = list(tuple_temp)
+            # casting edge to int 
+            tuple_temp.insert(0, int(temp[j]))
+            # cost is already in float no need to cast
+            tuple_temp.insert(1, temp[j+1])
+            tuple_temp = tuple(tuple_temp)
+            # too complicated :p accessing dictionary in list and then list in that dictionary
+            # appending the formatted tuples, after that I'll remove the unformatted data
+
+            # IDK why i did that
+            # data_to_be_cleaned[i][int(temp[0])].append(tuple_temp)
+            ####
+
+            data_to_be_cleaned[i][node_count].append(tuple_temp)
+
+        # removing unformatted data
+        for k in range(1, length+1):
+
+            # IDK why i did that
+            # data_to_be_cleaned[i][int(temp[0])].pop(0)
+            ####
+
+            data_to_be_cleaned[i][node_count].pop(0)
+
+        node_count += 1
+
+    # formatting: start_node
+    data_to_be_cleaned[len(data_to_be_cleaned)-1] = {"starting_node": int(data_to_be_cleaned[len(data_to_be_cleaned)-1][0])}
+    return data_to_be_cleaned
+
 def write_to_file(filename, data_to_be_cleaned):
     # try:
     #     shutil.rmtree(CLEANED_DATA)
@@ -24,7 +80,7 @@ def write_to_file(filename, data_to_be_cleaned):
                 file.write(" ")
         file.write("\n")
 
-def clean_data(filename):
+def clean_data(filename, is_write):
     file_path = os.path.join(BENCHMARK_DIR, filename)
     data_to_be_cleaned = []
 
@@ -33,22 +89,25 @@ def clean_data(filename):
         file.readline()
         file.readline()
         temp = []
+        # reading no of nodes
         temp.append(int(file.readline()))
         data_to_be_cleaned.append(temp)
         #Discarding line breaks
         file.readline()
+        # reading co-ordinates
         for i in range(data_to_be_cleaned[0][0]):
             temp = []
             line = file.readline()
             for word in line.split():
-                temp.append(word)
+                temp.append(float(word))
             data_to_be_cleaned.append(temp)
         #Discarding line breaks
         file.readline()
+        # reading edges cost and other data
         for line in file.readlines():
             temp = []
             for word in line.split():
-                temp.append(word)
+                temp.append(float(word))
             data_to_be_cleaned.append(temp)
         #Removing the line break from second last line
         data_to_be_cleaned.pop(-2)
@@ -72,5 +131,8 @@ def clean_data(filename):
                 is_pop = True
             list_len-=1
 
-    write_to_file(filename, data_to_be_cleaned)
+    if(is_write):
+        write_to_file(filename, data_to_be_cleaned)
+    data_to_be_cleaned = formatting_data(data_to_be_cleaned)
+    return data_to_be_cleaned
     
