@@ -1,29 +1,25 @@
 def createAdjMatrix(V, G):
-  
-  adjMatrix = []
-  
-  # create N x N matrix filled with 0 edge weights between all vertices
-  for i in range(0, V):
-    adjMatrix.append([])
-    for j in range(0, V):
-      adjMatrix[i].append(0)
-      
-  # populate adjacency matrix with correct edge weights
-  for i in range(0, len(G)):
-    adjMatrix[G[i][0]][G[i][1]] = G[i][2]
-    adjMatrix[G[i][1]][G[i][0]] = G[i][2]
+    adjMatrix = []
 
-  for i in adjMatrix:
-      print(i)
-  return adjMatrix
+    # create N x N matrix filled with 0 edge weights between all vertices
+    for i in range(0, V):
+        adjMatrix.append([])
+        for j in range(0, V):
+            adjMatrix[i].append(0)
 
-def prims(V, G):
-  
+    # populate adjacency matrix with correct edge weights
+    for i in range(0, len(G)):
+        adjMatrix[G[i][0]][G[i][1]] = G[i][2]
+        adjMatrix[G[i][1]][G[i][0]] = G[i][2]
+
+    return adjMatrix
+
+def prims(V, G, initial_node):
   # create adj matrix from graph
   adjMatrix = createAdjMatrix(V, G)
   
   # arbitrarily choose initial vertex from graph
-  vertex = 0
+  vertex = initial_node
   
   # initialize empty edges array and empty MST
   MST = []
@@ -60,24 +56,3 @@ def prims(V, G):
     minEdge = [None,None,float('inf')]
     
   return MST
-  
-# graph vertices are actually represented as numbers
-# like so: 0, 1, 2, ... V-1
-a, b, c, d, e, f = 0, 1, 2, 3, 4, 5
-
-# graph edges with weights
-# diagram of graph is shown above
-graph = [
-  [a,b,2],
-  [a,c,3],
-  [b,d,3],
-  [b,c,5],
-  [b,e,4],
-  [c,e,4],
-  [d,e,2],
-  [d,f,3],
-  [e,f,5]
-]
-
-# pass the # of vertices and the graph to run prims algorithm 
-# print(prims(6, graph))
