@@ -1,13 +1,9 @@
 from NodeClass import node as nd
-from DataCleaning import data_cleaning
+from DataCleaning import data_cleaning_script as dcs
+from Algorithms import Prims_Helper
 
 if __name__ == "__main__":
-    files_to_be_read = ["input10.txt", "input20.txt", "input30.txt",
-                        "input40.txt", "input50.txt", "input60.txt",
-                        "input70.txt", "input80.txt", "input90.txt",
-                        "input100.txt",
-                        ]
-    returned_data = data_cleaning.clean_data(filename=files_to_be_read[0], is_write=False)
+    returned_data = dcs.cleaned_data(0)
     number = returned_data[0]["no_of_nodes"]
     graph_nodes = []
     for i in range(1, number+1):
@@ -17,6 +13,8 @@ if __name__ == "__main__":
     
     for node in graph_nodes:
         print(node)
+    
+    Prims_Helper.prims_helper(graph_nodes)
     # print(nodes[0])
     # print(nodes[0].get_cost())
     # print(nodes[0].get_edge())

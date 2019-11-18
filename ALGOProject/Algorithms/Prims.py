@@ -80,4 +80,4 @@ graph = [
 ]
 
 # pass the # of vertices and the graph to run prims algorithm 
-print(prims(6, graph))
+# print(prims(6, graph))
