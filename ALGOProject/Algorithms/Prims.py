@@ -54,5 +54,4 @@ def prims(V, G, initial_node):
     # start at new vertex and reset min edge
     vertex = minEdge[1]
     minEdge = [None,None,float('inf')]
-    
   return MST

@@ -1,6 +1,6 @@
 from NodeClass import node as nd
 from DataCleaning import data_cleaning_script as dcs
-from Algorithms import Prims_Helper
+from Algorithms import Prims_Helper, Kruskal_Helper
 
 if __name__ == "__main__":
     # Adding cleaned data into node class
@@ -20,3 +20,4 @@ if __name__ == "__main__":
         print(node)
     
     Prims_Helper.prims_helper(graph_nodes)
+    Kruskal_Helper.kruskal_helper(graph_nodes)
