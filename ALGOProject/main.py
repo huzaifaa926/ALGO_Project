@@ -1,6 +1,6 @@
 from NodeClass import node as nd
 from DataCleaning import data_cleaning_script as dcs
-from Algorithms import Prims_Helper, Kruskal_Helper
+from Algorithms import Prims_Helper, Kruskal_Helper, Dijkstra_Helper
 
 if __name__ == "__main__":
     # Adding cleaned data into node class
@@ -21,3 +21,11 @@ if __name__ == "__main__":
     
     Prims_Helper.prims_helper(graph_nodes)
     Kruskal_Helper.kruskal_helper(graph_nodes)
+    Dijkstra_Helper.dijkstra_helper(graph_nodes)
+
+    nodes_coordinates = []
+    for node in graph_nodes:
+        nodes_coordinates.append(node.get_coordinate())
+    #poping last index because it is the starting node
+    nodes_coordinates.pop(-1)
+    # print(nodes_coordinates)

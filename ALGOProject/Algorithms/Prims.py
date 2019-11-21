@@ -54,4 +54,11 @@ def prims(V, G, initial_node):
     # start at new vertex and reset min edge
     vertex = minEdge[1]
     minEdge = [None,None,float('inf')]
+
+  total_cost = 0			
+  for i in range(len(MST)):
+    total_cost += MST[i][-1]
+
+  MST.append(total_cost)
+
   return MST

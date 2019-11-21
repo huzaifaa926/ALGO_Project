@@ -34,8 +34,6 @@ def kruskal(V, G, initial_node):
 	e = 0 # An index variable, used for result[] 
 	graph = sorted(graph,key=lambda item: item[2])
 	parent = [] ; rank = [] 
-	for j in graph:
-		print(j)
 	# Create V subsets with single elements 
 	for node in range(V): 
 		parent.append(node) 
@@ -44,7 +42,7 @@ def kruskal(V, G, initial_node):
 	while e < V - 1 : 
 		# Step 2: Pick the smallest edge and increment 
 				# the index for next iteration 
-		u,v,w = graph[i] 
+		u,v,w = graph[i]
 		i = i + 1
 		x = find(parent, u) 
 		y = find(parent ,v) 
@@ -54,6 +52,12 @@ def kruskal(V, G, initial_node):
 		if x != y: 
 			e = e + 1	
 			result.append([u,v,w]) 
-			union(parent, rank, x, y)			 
-		# Else discard the edge 
+			union(parent, rank, x, y)
+
+	total_cost = 0			
+	for i in range(len(result)):
+		total_cost += result[i][-1]
+
+	result.append(total_cost)
+	
 	return result

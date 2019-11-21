@@ -13,5 +13,5 @@ def kruskal_helper(graph_nodes):
             temp.append(graph_nodes[i].get_edge()[j])
             temp.append(graph_nodes[i].get_cost()[j])
             graph.append(temp)
-
+            
     print(kruskal(vertices, graph,  graph_nodes[-1].get_node_name()))
