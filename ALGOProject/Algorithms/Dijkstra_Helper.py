@@ -1,7 +1,7 @@
 from .Dijkstra import dijkstra
 
 def dijkstra_helper(graph_nodes):
-    # Formatting data for prims algorithm
+    # Formatting data for dijkstra algorithm
     graph = []
     # graph_nodes - 1,  beasuse initial/starting node stored at last index
     vertices = len(graph_nodes) - 1
@@ -14,5 +14,4 @@ def dijkstra_helper(graph_nodes):
             temp.append(graph_nodes[i].get_cost()[j])
             graph.append(temp)
 
-    dijkstra(vertices, graph,  graph_nodes[-1].get_node_name())
-    # print(dijkstra(vertices, graph,  graph_nodes[-1].get_node_name()))
+    print(dijkstra(vertices, graph,  graph_nodes[-1].get_node_name()))

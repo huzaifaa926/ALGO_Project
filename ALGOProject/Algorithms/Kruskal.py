@@ -58,6 +58,6 @@ def kruskal(V, G, initial_node):
 	for i in range(len(result)):
 		total_cost += result[i][-1]
 
-	result.append(total_cost)
+	result.append(round(total_cost,2))
 	
 	return result

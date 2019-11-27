@@ -1,7 +1,7 @@
 from .Kruskal import kruskal
 
 def kruskal_helper(graph_nodes):
-    # Formatting data for prims algorithm
+    # Formatting data for kruskal algorithm
     graph = []
     # graph_nodes - 1,  beasuse initial/starting node stored at last index
     vertices = len(graph_nodes) - 1

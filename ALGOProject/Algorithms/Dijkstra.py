@@ -1,32 +1,58 @@
-from collections import defaultdict
-from heapq import *
+import sys 
 
-def _dijkstra(edges, f, t):
-    g = defaultdict(list)
-    for l,r,c in edges:
-        g[l].append((c,r))
+def createAdjMatrix(V, G):
+    adjMatrix = []
 
-    q, seen, mins = [(0,f,())], set(), {f: 0}
-    while q:
-        (cost,v1,path) = heappop(q)
-        if v1 not in seen:
-            seen.add(v1)
-            path = (v1, path)
-            if v1 == t:
-                return (cost, path)
-
-            for c, v2 in g.get(v1, ()):
-                if v2 in seen: 
-                    continue
-                prev = mins.get(v2, None)
-                next = cost + c
-                if prev is None or next < prev:
-                    mins[v2] = next
-                    heappush(q, (next, v2, path))
-
-    return float("inf")
-
-def dijkstra(V, G, initial_node):
+    # create N x N matrix filled with 0 edge weights between all vertices
     for i in range(0, V):
-      print(_dijkstra(G, initial_node, i))
-    #   print(len(_dijkstra(G, initial_node, i)))
+        adjMatrix.append([])
+        for j in range(0, V):
+            adjMatrix[i].append(0)
+
+    # populate adjacency matrix with correct edge weights
+    for i in range(0, len(G)):
+        adjMatrix[G[i][0]][G[i][1]] = G[i][2]
+        adjMatrix[G[i][1]][G[i][0]] = G[i][2]
+
+    return adjMatrix
+
+def minDistance(dist, sptSet, V):
+    # A utility function to find the vertex with 
+	# minimum distance value, from the set of vertices 
+	# not yet included in shortest path tree 
+    min = sys.maxsize 
+    for v in range(V):
+        if dist[v] < min and sptSet[v] == False: 
+            min = dist[v] 
+            min_index = v 
+    return min_index 
+
+def printSolution(dist): 
+    print ("Vertex tDistance from Source")
+    for node in range(V): 
+        print (node, "t", dist[node] )
+
+def dijkstra(V, G, src):
+    graph = createAdjMatrix(V, G)
+    dist = [sys.maxsize] * V 
+    dist[src] = 0
+    sptSet = [False] * V 
+    pi = [[0 for x in range(3)] for y in range(V)]
+
+    for cout in range(V): 
+        u = minDistance(dist, sptSet, V) 
+        sptSet[u] = True
+        for v in range(V): 
+            if graph[u][v] > 0 and sptSet[v] == False and dist[v] > dist[u] + graph[u][v]: 
+                    dist[v] = dist[u] + graph[u][v]
+                    pi[v][0] = u
+                    pi[v][1] = v
+                    pi[v][2] = graph[u][v]
+    pi.pop(src)
+    # printSolution(dist) 
+    total_cost = 0			
+    for i in range(len(pi)):
+    	total_cost += pi[i][-1]
+    pi.append(round(total_cost,2))
+
+    return pi

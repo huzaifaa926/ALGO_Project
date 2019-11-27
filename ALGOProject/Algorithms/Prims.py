@@ -59,6 +59,6 @@ def prims(V, G, initial_node):
   for i in range(len(MST)):
     total_cost += MST[i][-1]
 
-  MST.append(total_cost)
+  MST.append(round(total_cost,2))
 
   return MST
