@@ -1,10 +1,11 @@
 from NodeClass import node as nd
 from DataCleaning import data_cleaning_script as dcs
-from Algorithms import Prims_Helper, Kruskal_Helper, Dijkstra_Helper
+from Algorithms import Prims_Helper, Kruskal_Helper, \
+                        Dijkstra_Helper, BellmanFord_Helper
 
 if __name__ == "__main__":
     # Adding cleaned data into node class
-    returned_data = dcs.cleaned_data(0)
+    returned_data = dcs.cleaned_data(1)
     number = returned_data[0]["no_of_nodes"]
     graph_nodes = []
     for i in range(1, number+1):
@@ -22,6 +23,7 @@ if __name__ == "__main__":
     Prims_Helper.prims_helper(graph_nodes)
     Kruskal_Helper.kruskal_helper(graph_nodes)
     Dijkstra_Helper.dijkstra_helper(graph_nodes)
+    BellmanFord_Helper.bellman_ford_helper(graph_nodes)
 
     nodes_coordinates = []
     for node in graph_nodes:

@@ -27,15 +27,10 @@ def minDistance(dist, sptSet, V):
             min_index = v 
     return min_index 
 
-def printSolution(dist): 
-    print ("Vertex tDistance from Source")
-    for node in range(V): 
-        print (node, "t", dist[node] )
-
-def dijkstra(V, G, src):
+def dijkstra(V, G, initial_node):
     graph = createAdjMatrix(V, G)
     dist = [sys.maxsize] * V 
-    dist[src] = 0
+    dist[initial_node] = 0
     sptSet = [False] * V 
     pi = [[0 for x in range(3)] for y in range(V)]
 
@@ -48,8 +43,7 @@ def dijkstra(V, G, src):
                     pi[v][0] = u
                     pi[v][1] = v
                     pi[v][2] = graph[u][v]
-    pi.pop(src)
-    # printSolution(dist) 
+    pi.pop(initial_node)
     total_cost = 0			
     for i in range(len(pi)):
     	total_cost += pi[i][-1]
