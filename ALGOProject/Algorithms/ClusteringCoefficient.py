@@ -65,4 +65,4 @@ def clustering_coefficient(V, G, initial_node):
         coefficient.append(round((2*Nv[i])/(Kv[i]*(Kv[i]-1)), 2))
 
     # Average Clustering Coefficient
-    return sum(coefficient)/V 
+    return round(sum(coefficient)/V,5)

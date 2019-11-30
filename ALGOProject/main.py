@@ -29,12 +29,13 @@ if __name__ == "__main__":
     floydwarshall_graph = FloydWarshall_Helper.floyd_warshall_helper(graph_nodes, dijkstra_graph)
     clustering_coefficient = ClusteringCoefficient_Helper.clustering_coefficient_helper(graph_nodes)
 
-    print(prims_graph)
-    print(kruskal_graph)
-    print(dijkstra_graph)
-    print(bellmanford_graph)
-    print(floydwarshall_graph)
-    print(clustering_coefficient)
+    # print(prims_graph[-1], kruskal_graph[-1], dijkstra_graph[-1], bellmanford_graph[-1], floydwarshall_graph[-1], clustering_coefficient)
+    # print(prims_graph)
+    # print(kruskal_graph)
+    # print(dijkstra_graph)
+    # print(bellmanford_graph)
+    # print(floydwarshall_graph)
+    # print(clustering_coefficient)
     
 
     nodes_coordinates = []
