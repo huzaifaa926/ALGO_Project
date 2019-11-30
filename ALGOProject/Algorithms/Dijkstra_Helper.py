@@ -14,4 +14,4 @@ def dijkstra_helper(graph_nodes):
             temp.append(graph_nodes[i].get_cost()[j])
             graph.append(temp)
 
-    print(dijkstra(vertices, graph,  graph_nodes[-1].get_node_name()))
+    return dijkstra(vertices, graph,  graph_nodes[-1].get_node_name())

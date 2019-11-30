@@ -43,10 +43,9 @@ def dijkstra(V, G, initial_node):
                     pi[v][0] = u
                     pi[v][1] = v
                     pi[v][2] = graph[u][v]
-    pi.pop(initial_node)
     total_cost = 0			
     for i in range(len(pi)):
     	total_cost += dist[i]
     pi.append(round(total_cost,2))
-
+    pi.pop(initial_node)
     return pi

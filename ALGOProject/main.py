@@ -1,7 +1,8 @@
 from NodeClass import node as nd
 from DataCleaning import data_cleaning_script as dcs
 from Algorithms import Prims_Helper, Kruskal_Helper, \
-                        Dijkstra_Helper, BellmanFord_Helper
+                        Dijkstra_Helper, BellmanFord_Helper, \
+                        FloydWarshall_Helper
 
 if __name__ == "__main__":
     # Adding cleaned data into node class
@@ -20,10 +21,18 @@ if __name__ == "__main__":
     for node in graph_nodes:
         print(node)
     
-    Prims_Helper.prims_helper(graph_nodes)
-    Kruskal_Helper.kruskal_helper(graph_nodes)
-    Dijkstra_Helper.dijkstra_helper(graph_nodes)
-    BellmanFord_Helper.bellman_ford_helper(graph_nodes)
+    prims_graph = Prims_Helper.prims_helper(graph_nodes)
+    kruskal_graph = Kruskal_Helper.kruskal_helper(graph_nodes)
+    dijkstra_graph = Dijkstra_Helper.dijkstra_helper(graph_nodes)
+    bellmanford_graph = BellmanFord_Helper.bellman_ford_helper(graph_nodes)
+    floydwarshall_graph = FloydWarshall_Helper.floyd_warshall_helper(graph_nodes, dijkstra_graph)
+
+    print(prims_graph)
+    print(kruskal_graph)
+    print(dijkstra_graph)
+    print(bellmanford_graph)
+    print(floydwarshall_graph)
+    
 
     nodes_coordinates = []
     for node in graph_nodes:

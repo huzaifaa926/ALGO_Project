@@ -1,6 +1,6 @@
 from .FloydWarshall import floyd_warshall
 
-def bellman_ford_helper(graph_nodes):
+def floyd_warshall_helper(graph_nodes, prev_graph):
     # Formatting data for floyd warshall algorithm
     graph = []
     # graph_nodes - 1,  beasuse initial/starting node stored at last index
@@ -13,5 +13,6 @@ def bellman_ford_helper(graph_nodes):
             temp.append(graph_nodes[i].get_edge()[j])
             temp.append(graph_nodes[i].get_cost()[j])
             graph.append(temp)
-
-    print(floyd_warshall(vertices, graph,  graph_nodes[-1].get_node_name()))
+            
+    prev_graph[-1] = floyd_warshall(vertices, graph,  graph_nodes[-1].get_node_name())
+    return prev_graph

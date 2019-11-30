@@ -15,4 +15,4 @@ def prims_helper(graph_nodes):
             graph.append(temp)
 
     # print(graph)
-    print(prims(vertices, graph,  graph_nodes[-1].get_node_name()))
+    return prims(vertices, graph,  graph_nodes[-1].get_node_name())

@@ -21,9 +21,9 @@ def bellman_ford(V, G, initial_node):
             if dist[u] != float("Inf") and dist[u] + w < dist[v]: 
                     print("Graph contains negative weight cycle")
                     return
-    pi.pop(initial_node)
     total_cost = 0			
     for i in range(len(pi)):
     	total_cost += dist[i]
     pi.append(round(total_cost,2))
+    pi.pop(initial_node)
     return pi

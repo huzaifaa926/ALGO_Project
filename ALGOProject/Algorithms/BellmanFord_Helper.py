@@ -14,4 +14,4 @@ def bellman_ford_helper(graph_nodes):
             temp.append(graph_nodes[i].get_cost()[j])
             graph.append(temp)
 
-    print(bellman_ford(vertices, graph,  graph_nodes[-1].get_node_name()))
+    return bellman_ford(vertices, graph,  graph_nodes[-1].get_node_name())
