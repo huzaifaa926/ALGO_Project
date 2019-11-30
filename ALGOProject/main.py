@@ -5,7 +5,7 @@ from Algorithms import Prims_Helper, Kruskal_Helper, \
 
 if __name__ == "__main__":
     # Adding cleaned data into node class
-    returned_data = dcs.cleaned_data(1)
+    returned_data = dcs.cleaned_data(0)
     number = returned_data[0]["no_of_nodes"]
     graph_nodes = []
     for i in range(1, number+1):
