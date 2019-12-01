@@ -6,12 +6,7 @@ from . import plot
 graph_nodes = []
 nodes_coordinates = []
 graph = []
-prims_graph = []
-kruskal_graph = []
-dijkstra_graph = []
-bellmanford_graph = []
-floydwarshall_graph = []
-clustering_coefficient = []
+val = 0
 
 def selectfile(val):
     graph_nodes = PopulatingNode.populate(val)    
@@ -33,12 +28,6 @@ def selectfile(val):
         nodes_coordinates.append(node.get_coordinate())
     #poping last index because it is the starting node
     nodes_coordinates.pop(-1)
-    prims_graph = Prims_Helper.prims_helper(graph_nodes)
-    kruskal_graph = Kruskal_Helper.kruskal_helper(graph_nodes)
-    dijkstra_graph = Dijkstra_Helper.dijkstra_helper(graph_nodes)
-    bellmanford_graph = BellmanFord_Helper.bellman_ford_helper(graph_nodes)
-    floydwarshall_graph = FloydWarshall_Helper.floyd_warshall_helper(graph_nodes, dijkstra_graph)
-    clustering_coefficient = ClusteringCoefficient_Helper.clustering_coefficient_helper(graph_nodes)
 
 
 def menu():
@@ -55,24 +44,34 @@ def menu():
     def ok():
         value = var.get()
         if value == "input10":
+            val = 0
             selectfile(0)
         elif value == "input20":
+            val = 1
             selectfile(1)
         elif value == "input30":
+            val = 2
             selectfile(2)
         elif value == "input40":
+            val = 3
             selectfile(3)
         elif value == "input50":
+            val = 4
             selectfile(4)
         elif value == "input60":
+            val = 5
             selectfile(5)
         elif value == "input70":
+            val = 6
             selectfile(6)
         elif value == "input80":
+            val = 7
             selectfile(7)
         elif value == "input90":
+            val = 8
             selectfile(8)
         elif value == "input100":
+            val = 9
             selectfile(9)
         else:
             err = Label(master, text='No file Chosen!', foreground = 'red')
@@ -84,25 +83,25 @@ def menu():
         m = tk.Tk()
         m.title('Play With Graphs')
         m.state('zoomed')
-        initial = tk.Button(m, text='Plot Initial Graph', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph))
+        initial = tk.Button(m, text='Plot Initial Graph', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph, file=val))
         initial.place(relx = 0.5, rely = 0.2, anchor = CENTER)
         mst = tk.Label(m, text = 'Minimum Spanning Tree Algorithms')
         mst.place(relx = 0.5, rely = 0.35, anchor = CENTER)
-        pr = tk.Button(m, text='Prims', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, prims_graph))
+        pr = tk.Button(m, text='Prims', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph_nodes, algo=1, file=val))
         pr.place(relx = 0.39, rely = 0.4, anchor = CENTER)
-        kr = tk.Button(m, text='Kruskal', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, kruskal_graph))
+        kr = tk.Button(m, text='Kruskal', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph_nodes, algo=2, file=val))
         kr.place(relx = 0.61, rely = 0.4, anchor = CENTER)
         SP = tk.Label(m, text = 'Shortest Path Algorithms')
         SP.place(relx = 0.5, rely = 0.55, anchor = CENTER)
-        dij = tk.Button(m, text='Dijkstra', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, dijkstra_graph))
+        dij = tk.Button(m, text='Dijkstra', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph_nodes, algo=3, file=val))
         dij.place(relx = 0.28, rely = 0.6, anchor = CENTER)
-        bell = tk.Button(m, text='Bellman Ford', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, bellmanford_graph))
+        bell = tk.Button(m, text='Bellman Ford', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph_nodes, algo=4, file=val))
         bell.place(relx = 0.5, rely = 0.6, anchor = CENTER)
-        fl = tk.Button(m, text='Floyd Warshall', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, floydwarshall_graph))
+        fl = tk.Button(m, text='Floyd Warshall', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph_nodes, algo=5, file=val))
         fl.place(relx = 0.72, rely = 0.6, anchor = CENTER)
         lc = tk.Label(m, text = 'Clustering Coefficient Algorithm')
         lc.place(relx = 0.5, rely = 0.75, anchor = CENTER)
-        local = tk.Button(m, text='Local Clustering', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph))
+        local = tk.Button(m, text='Local Clustering', bd=5, width=40, height=2, command= lambda: plot.plotgraph(nodes_coordinates, graph, algo=6, file=val))
         local.place(relx = 0.5, rely = 0.8, anchor = CENTER)
         m.mainloop()
 
