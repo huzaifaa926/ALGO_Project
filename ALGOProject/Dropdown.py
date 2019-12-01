@@ -1,30 +1,9 @@
 from tkinter import *
 import tkinter as tk
-import networkx as nx
-import matplotlib.pyplot as plt
-
-def plotgraph(vertex, arr):
-    G=nx.DiGraph()
-    fig, ax = plt.subplots()
-    for j in range(0,len(vertex)):
-        a = vertex[j][0]
-        b = vertex[j][1]
-        G.add_node(j,pos=(a,b))
-    for i in range(0,len(arr)):
-        x = arr[i][0]
-        y = arr[i][1]
-        z = arr[i][2]
-        G.add_edge(x,y,weight=z)
-    pos=nx.get_node_attributes(G,'pos')
-    nx.draw_networkx(G, pos, ax=ax)
-    labels = nx.get_edge_attributes(G,'weight')
-    nx.draw_networkx_edge_labels(G,pos,edge_labels=labels)
-    ax.tick_params(left = True, bottom = True, labelleft = True, labelbottom = True)
-    plt.get_current_fig_manager().window.state('zoomed')
-    plt.show()
 
 def selectfile(val):
-    print("Huzu bhai file", val, "ko use karo xD")
+    print(val)
+    return val
 
 
 master = Tk()
@@ -37,31 +16,28 @@ var = StringVar(master)
 option = OptionMenu(master, var, "input10", "input20", "input30", "input40", "input50", "input60", "input70", "input80", "input90", "input100")
 option.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 
-#
-# test stuff
-
 def ok():
     value = var.get()
     if value == "input10":
-        selectfile(1)
+        selectfile(0)
     elif value == "input20":
-        selectfile(2)
+        selectfile(1)
     elif value == "input30":
-        selectfile(3)
+        selectfile(2)
     elif value == "input40":
-        selectfile(4)
+        selectfile(3)
     elif value == "input50":
-        selectfile(5)
+        selectfile(4)
     elif value == "input60":
-        selectfile(6)
+        selectfile(5)
     elif value == "input70":
-        selectfile(7)
+        selectfile(6)
     elif value == "input80":
-        selectfile(8)
+        selectfile(7)
     elif value == "input90":
-        selectfile(9)
+        selectfile(8)
     elif value == "input100":
-        selectfile(10)
+        selectfile(9)
     else:
         err = Label(master, text='No file Chosen!', foreground = 'red')
         err.place(relx = 0.5, rely = 0.5, anchor = CENTER)
