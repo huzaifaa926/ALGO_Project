@@ -9,12 +9,30 @@ Install the required dependecies, i.e. [networkx](https://pypi.org/project/netwo
 ____
 ### Screenshots
 
-![alt text](/ALGOProject/assets/input_page.png "Choose input file from the drop down menu.")
-![alt text](/ALGOProject/assets/algo_page.png "Select the algorithm to be applied on datasets.")
-![alt text](/ALGOProject/assets/initial_graph.png "Initial Graph.")
-![alt text](/ALGOProject/assets/prims.png "Prims.")
-![alt text](/ALGOProject/assets/kruskal.png "Kruskal.")
-![alt text](/ALGOProject/assets/dijkstra.png "Dijkstra.")
-![alt text](/ALGOProject/assets/floyd_warshall.png "Floyd Warshall.")
-![alt text](/ALGOProject/assets/bellman_ford.png "Bellman Ford.")
-![alt text](/ALGOProject/assets/clustering_coefficient.png "Clustering Co-efficient.")
+#### Input Page
+____
+  ![alt text](/ALGOProject/assets/input_page.png "Choose input file from the drop down menu.")
+#### Choose Algorithm
+____
+  ![alt text](/ALGOProject/assets/algo_page.png "Select the algorithm to be applied on datasets.")
+#### Initial Graph
+____
+  ![alt text](/ALGOProject/assets/initial_graph.png "Initial Graph.")
+#### Prims
+____
+  ![alt text](/ALGOProject/assets/prims.png "Prims.")
+#### Kruskal
+____
+  ![alt text](/ALGOProject/assets/kruskal.png "Kruskal.")
+#### Dijkstra
+____
+  ![alt text](/ALGOProject/assets/dijkstra.png "Dijkstra.")
+#### Floyd Warshall
+____
+  ![alt text](/ALGOProject/assets/floyd_warshall.png "Floyd Warshall.")
+#### Bellman Ford
+____
+  ![alt text](/ALGOProject/assets/bellman_ford.png "Bellman Ford.")
+#### Clustering Co-efficient
+____
+  ![alt text](/ALGOProject/assets/clustering_coefficient.png "Clustering Co-efficient.")
