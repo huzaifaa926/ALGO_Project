@@ -4,7 +4,9 @@ ____
 
 
 ### Installation
-Install the required dependecies, i.e. [networkx](https://pypi.org/project/networkx/), [matplotlib](https://pypi.org/project/matplotlib/) and [tkinter](https://tkdocs.com/tutorial/install.html). After that, just run the `main.py` file.
+- Clone this repository `https://github.com/huzaifaa926/ALGO_Project.git`.
+- Install the required dependecies, i.e. [networkx](https://pypi.org/project/networkx/), [matplotlib](https://pypi.org/project/matplotlib/) and [tkinter](https://tkdocs.com/tutorial/install.html).
+- After that, just run the `main.py` file.
 
 ____
 ### Screenshots
